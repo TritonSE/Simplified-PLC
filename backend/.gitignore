@@ -1,0 +1,12 @@
+.env
+serviceAccountKey.json
+
+# Python virtual environment
+.venv/
+
+# Python bytecode and tool caches
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
