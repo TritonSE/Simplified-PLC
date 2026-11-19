@@ -1,15 +1,6 @@
-import importlib
-import sys
-from collections.abc import Callable
-from types import ModuleType
+"""Default settings so the tests run without a backend/.env file or a running MongoDB."""
 
-import pytest
+import os
 
-
-@pytest.fixture
-def load_module(monkeypatch: pytest.MonkeyPatch) -> Callable[[str], ModuleType]:
-    """Return a loader that imports a fresh copy of a module without reading any .env file."""
-    monkeypatch.setenv("PYTHON_DOTENV_DISABLED", "1")
-    for name in ("src.app", "src.config"):
-        monkeypatch.delitem(sys.modules, name, raising=False)
-    return importlib.import_module
+os.environ.setdefault("MONGODB_URI", "mongodb://localhost:27017/simplified-plc-test")
+os.environ.setdefault("FRONTEND_ORIGIN", "http://localhost:3000")

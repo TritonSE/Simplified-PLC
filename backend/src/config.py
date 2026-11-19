@@ -1,13 +1,16 @@
-import os
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from dotenv import load_dotenv
 
-from src.errors import InternalError
+class Config(BaseSettings):
+    """Global settings, read from environment variables or backend/.env.
 
-load_dotenv()
+    The app refuses to start if a required setting is missing.
+    """
 
-if not os.environ.get("PORT"):
-    raise InternalError.NO_APP_PORT
-port = int(os.environ["PORT"])
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-__all__ = ["port"]
+    MONGODB_URI: str
+    FRONTEND_ORIGIN: str
+
+
+settings = Config()

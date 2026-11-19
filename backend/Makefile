@@ -1,7 +1,7 @@
 .PHONY: start test check-git-hooks format lint-fix lint-check
 
 start:
-	uv run python -m src.app
+	uv run fastapi dev src/main.py
 
 test:
 	uv run pytest

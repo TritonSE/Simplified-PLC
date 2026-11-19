@@ -32,16 +32,13 @@ Everyone, including developers who only work on the backend, needs to run `npm i
 
 1. `cd backend`
 2. Run `uv sync` to install Python and all dependencies
-3. If running the database locally, make sure to [start mongod](https://www.mongodb.com/docs/manual/tutorial/manage-mongodb-processes/#start-mongod-processes)
+3. If running the database locally, make sure to [start mongod](https://www.mongodb.com/docs/manual/tutorial/manage-mongodb-processes/#start-mongod-processes). For a local database, set `MONGODB_URI=mongodb://localhost:27017/simplified-plc` in `backend/.env`
 4. `make start` to start the backend
 
 If this works properly you should see these messages in the terminal:
 
 ```
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [16830] using WatchFiles
-INFO:     Started server process [16832]
-INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 ```
 
